@@ -1,0 +1,6 @@
+com/vehicle/signal/schedular/model/Vehicle.class
+com/vehicle/signal/schedular/schedular/VehiclePulseSchedular.class
+com/vehicle/signal/schedular/client/VehicleClient.class
+com/vehicle/signal/schedular/model/Status.class
+com/vehicle/signal/schedular/VehicleStatusSignalScheularApplication.class
+com/vehicle/signal/schedular/model/Vehicle$VehicleBuilder.class

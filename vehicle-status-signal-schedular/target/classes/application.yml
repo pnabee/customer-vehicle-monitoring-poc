@@ -1,0 +1,11 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: vehicle-status-signal-schedular
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/

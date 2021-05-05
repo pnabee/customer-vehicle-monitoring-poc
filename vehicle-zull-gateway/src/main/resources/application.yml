@@ -1,0 +1,20 @@
+zuul:
+  routes:
+    vehicle:
+      url: http://online-vehicle-monitoring
+      path: /api/vehicle/**
+    customer:
+      url: http://online-vehicle-monitoring
+      path: /api/customer/**
+    
+spring:
+  application:
+    name: vehicle-zuul-gateway
+
+server:
+  port: 8088
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/

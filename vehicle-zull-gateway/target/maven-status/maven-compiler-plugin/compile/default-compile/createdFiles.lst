@@ -1,0 +1,5 @@
+com/vehicle/zuul/gateway/filters/PreFilter.class
+com/vehicle/zuul/gateway/filters/ErrorFilter.class
+com/vehicle/zuul/gateway/filters/RouteFilter.class
+com/vehicle/zuul/gateway/filters/PostFilter.class
+com/vehicle/zuul/gateway/ZuulAPIGatewayApplication.class

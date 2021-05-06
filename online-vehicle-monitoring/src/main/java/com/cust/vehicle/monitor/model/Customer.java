@@ -41,10 +41,9 @@ public class Customer implements Serializable  {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Size(max=50)
-    @Column(name = "name", unique=true, nullable=false)
+    	@Column(name = "name", unique=true, nullable=false)
 	private String name;
 	@Size(max = 200)
 	@Column(name = "address")

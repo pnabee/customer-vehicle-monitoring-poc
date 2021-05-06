@@ -114,5 +114,25 @@ GET	|/api/vehicle/vehicles{customername	  |get all vehicles with customer name
 GET	|/api/vehicle/{vehicleid}	  |get vehicle by vehicleid
 POST	|/api/vehicle/{vehicleid}	  |vehcile ping schedular will update the vehicle status
 
+# MysQl Configuration and erureka serverregistration properties in application.properties file
+
+- spring.application.name=online-vehicle-monitoring
+- server.port=8081
+- spring.datasource.url= jdbc:mysql://{YOUR_MSQL_SERVER}:3306/{DATABASE NAME}
+- spring.datasource.username={MYSQL_USERNAME}
+- spring.datasource.password={MYSQL_PASSWORD}
+- spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect
+- spring.jpa.properties.hibernate.id.new_generator_mappings = false
+- spring.jpa.properties.hibernate.format_sql = true
+- #Hibernate ddl auto (create, create-drop, validate, update)
+- spring.jpa.hibernate.ddl-auto=update
+- logging.level.org.hibernate.SQL=DEBUG
+- logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+- #register your servie in eureka server
+- eureka.client.serviceUrl.defaultZone= http://{EUREKA_SERVER_HOST_NAME}:{EUREKA_SERVER_PORT}/eureka/
+
+
+
+
 
 

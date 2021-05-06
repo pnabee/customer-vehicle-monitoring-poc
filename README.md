@@ -90,11 +90,11 @@ Below you have all customers from the system; their addresses and the vehicles t
 
 |-----------------------------------|
 
-##Solution
+## Solution:
 
-#Technology Stack: Spring Boot RESTful API - API GateWay Eureka JPA Hibernate MySQL Example
+# Technology Stack: Spring Boot RESTful API - API GateWay Eureka JPA Hibernate MySQL Example
 
-One to Many, Many to One bidirectional mapping
+#One to Many, Many to One bidirectional mapping
 ![image](https://user-images.githubusercontent.com/40293573/117363558-5c535200-aeda-11eb-84a9-0968a3143abf.png)
 
 
@@ -102,5 +102,17 @@ One to Many, Many to One bidirectional mapping
 
 
 
-#Check the domain class
+# RESTful API's
+METHOD	PATH	                        DESCRIPTION
+GET	/api/customer	            get all customers
+POST	/api/customer/customer	            save customer
+GET	/api/customer/{customerid}	get customer by customerid
+
+GET         /api/vehicle                        get all vehicles
+POST	/api/vehicle/vehicle/{customername}	save vehicle with customername
+GET	/api/vehicle/vehicles{customername}	get all vehicles with customer name
+GET	/api/vehicle/{vehicleid}	get vehicle by vehicleid
+POST	/api/vehicle/{vehicleid}	vehcile ping schedular will update the vehicle status
+
+
 

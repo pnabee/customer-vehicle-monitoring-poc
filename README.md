@@ -103,16 +103,16 @@ Below you have all customers from the system; their addresses and the vehicles t
 
 
 # RESTful API's
-METHOD	PATH	                        DESCRIPTION
-GET	/api/customer	            get all customers
-POST	/api/customer/customer	            save customer
-GET	/api/customer/{customerid}	get customer by customerid
-
-GET         /api/vehicle                        get all vehicles
-POST	/api/vehicle/vehicle/{customername}	save vehicle with customername
-GET	/api/vehicle/vehicles{customername}	get all vehicles with customer name
-GET	/api/vehicle/{vehicleid}	get vehicle by vehicleid
-POST	/api/vehicle/{vehicleid}	vehcile ping schedular will update the vehicle status
+|METHOD	|PATH	                          |DESCRIPTION                                            |
+|:----------|:------------------------------------|:------------------------------------------------------|
+GET	|/api/customer	              |get all customers
+POST	|/api/customer/customer	              |save customer
+GET	|/api/customer/{customerid}	  |get customer by customerid
+GET         |/api/vehicle                         |get all vehicles
+POST	|/api/vehicle/vehicle/{customername}  |save vehicle with customername
+GET	|/api/vehicle/vehicles{customername	  |get all vehicles with customer name
+GET	|/api/vehicle/{vehicleid}	  |get vehicle by vehicleid
+POST	|/api/vehicle/{vehicleid}	  |vehcile ping schedular will update the vehicle status
 
 
 

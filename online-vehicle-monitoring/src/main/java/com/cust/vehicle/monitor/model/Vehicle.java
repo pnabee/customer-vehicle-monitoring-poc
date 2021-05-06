@@ -41,7 +41,6 @@ public class Vehicle implements Serializable  {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "REG_NUM")
 	private String registrationNumber;

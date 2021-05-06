@@ -90,6 +90,17 @@ Below you have all customers from the system; their addresses and the vehicles t
 
 |-----------------------------------|
 
-Solution
+##Solution
+
+#Technology Stack: Spring Boot RESTful API - API GateWay Eureka JPA Hibernate MySQL Example
+
+One to Many, Many to One bidirectional mapping
+![image](https://user-images.githubusercontent.com/40293573/117363558-5c535200-aeda-11eb-84a9-0968a3143abf.png)
+
+
+
+
+
+
 
 

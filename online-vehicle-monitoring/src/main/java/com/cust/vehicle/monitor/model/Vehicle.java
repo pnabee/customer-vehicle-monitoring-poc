@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.cust.vehicle.monitor.model;
 
 import java.io.Serializable;
@@ -9,8 +7,6 @@ import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,9 +16,7 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 
@@ -33,24 +27,25 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Getter
-@Setter
 public class Vehicle implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "id")
-	private Long id;
-	@Column(name = "REG_NUM")
+	@Column(name = "vid")
+	private String vid;
+	
+	@Size(max=50)
+    @Column(name = "REG_NUM")
 	private String registrationNumber;
 	
 	@Column(name = "status")
 	private Status status;
 	private LocalDateTime lastPulseTime;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "name", referencedColumnName = "name", nullable = false)
+	//@Size(max=50)
+    @ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "custid", referencedColumnName = "custid", nullable = false)
 	private Customer customer; //Vehicle <-> Customer  Many to one 
 	
 	
@@ -62,12 +57,14 @@ public class Vehicle implements Serializable  {
 		this.customer = customer;
 	}
 
-	public Long getId() {
-		return id;
+	
+
+	public String getVid() {
+		return vid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setVid(String vid) {
+		this.vid = vid;
 	}
 
 	public String getRegistrationNumber() {

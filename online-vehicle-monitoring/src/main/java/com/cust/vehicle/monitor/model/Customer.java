@@ -33,31 +33,31 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Getter
-@Setter
 public class Customer implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "custid")
+	private String custid;
 	@Size(max=50)
-    	@Column(name = "name", unique=true, nullable=false)
+    @Column(name = "name", unique=true, nullable=false)
 	private String name;
 	@Size(max = 200)
 	@Column(name = "address")
 	private String address;
 	
+	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
 	private Set <Vehicle> vehicles = new HashSet<>(); //Customer <-> Vehicle OneToMany
 	
 	
-	public Long getId() {
-		return id;
+	
+	public String getCustid() {
+		return custid;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setCustid(String custid) {
+		this.custid = custid;
 	}
 	public String getName() {
 		return name;
@@ -75,12 +75,5 @@ public class Customer implements Serializable  {
 		vehicles.add(vehicle);
 		
 	}
-	
-	/*@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "id : " + id + " name : " + name + " address :" + address;
-				
-	}*/
 
 }

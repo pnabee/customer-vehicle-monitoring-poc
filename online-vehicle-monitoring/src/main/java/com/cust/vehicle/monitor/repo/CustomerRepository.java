@@ -10,7 +10,7 @@ import com.cust.vehicle.monitor.model.Customer;
 
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-	Optional<Customer> findCustomerByName(String name);
+public interface CustomerRepository extends JpaRepository<Customer, String> {
+	
 
 }

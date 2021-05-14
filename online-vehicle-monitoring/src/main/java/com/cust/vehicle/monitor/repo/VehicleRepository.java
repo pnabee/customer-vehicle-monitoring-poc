@@ -14,7 +14,7 @@ import com.cust.vehicle.monitor.model.Vehicle;
 
 
 @Repository
-public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
+public interface VehicleRepository extends JpaRepository<Vehicle, String> {
 	
 	@Query(value = "SELECT * FROM vehicle WHERE custid=?",  nativeQuery = true)
 	List<Vehicle> findByVehiclesByCustId(@Param("custid") String custid);

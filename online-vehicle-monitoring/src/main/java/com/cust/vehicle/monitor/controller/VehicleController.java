@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.cust.vehicle.monitor.controller;
 
 import static org.springframework.http.ResponseEntity.noContent;
@@ -52,15 +49,13 @@ public class VehicleController {
 	private VehicleRepository vehicleRepository;
 	
 	
-	@ApiOperation(value = "Save vehicle")
-	@PostMapping("/vehicle/{name}")
-	public ResponseEntity<Vehicle> saveVehicle(@RequestBody Vehicle vehicle,@PathVariable("name")final String name) {
-		Customer customer = customerService.findCustomerByName(name).orElseThrow(() -> new ResourceNotFoundException("No Vehicle with that Customer Name !"));
+	@ApiOperation(value = "Save vehicle with customername")
+	@PostMapping("/vehicle/{custid}")
+	public ResponseEntity<Vehicle> saveVehicle(@RequestBody Vehicle vehicle,@PathVariable("custid")final String custid) {
+		Customer customer = customerService.getCustomerByCustId(custid).orElseThrow(() -> new ResourceNotFoundException("No Vehicle with that CustomerId !"));
 		vehicle.setCustomer(customer);
 		vehicleService.saveVehicle(vehicle);
-		
 		return new ResponseEntity<Vehicle>(HttpStatus.OK);
-
 	}
 
 	@ApiOperation(value = "Get all vehicles")
@@ -73,44 +68,31 @@ public class VehicleController {
 		}
 		return ok(vehicles);
 	}
-	/*@ApiOperation(value = "Get vehicle by vehicle Id")
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/{vehicleId}")
-	public ResponseEntity<Vehicle> findVehicleById(
-			@PathVariable("vehicleId") long vehicleId) {
-		System.out.println("Vehicle Id @@@@@@@@@@@@@@@::"+vehicleId);
-		vehicleService.findById(vehicleId);
-		return new ResponseEntity<Vehicle>(HttpStatus.OK);
-	}*/
+	
 	@ApiOperation(value = "Get vehicle by vehicleid")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/{vehicleId}")
-	public ResponseEntity<Customer> findByVehicleId(
-			@PathVariable("vehicleId") Long vehicleId) {
-		return customerService.find(vehicleId).map(ResponseEntity::ok)
+	public ResponseEntity<Vehicle> findByVehicleId(
+			@PathVariable("vehicleId") String vehicleId) {
+		return vehicleService.findById(vehicleId).map(ResponseEntity::ok)
 				.orElse(notFound().build());
 	}
 	
-	
-	@ApiOperation(value = "Get all vehicles by customer name")
-	@GetMapping("/vehicles/{customername}")
-	public ResponseEntity<Collection<Vehicle>> findAllVehiclesByCustometName(@Valid @PathVariable("customername") final String name){
-		
-		List<Vehicle> vehicleCollection = vehicleRepository.findByVehicleWithName((name));
-		
-		
+	@ApiOperation(value = "Get all vehicles by customerId")
+	@GetMapping("/vehicles/{customerId}")
+	public ResponseEntity<Collection<Vehicle>> findAllVehiclesByCustometId(@Valid @PathVariable("customerId") final String customerId){
+		List<Vehicle> vehicleCollection = vehicleRepository.findByVehiclesByCustId((customerId));
 		if(vehicleCollection.isEmpty())
-			throw new ElementNullException("No data with this CustomerName !");
-		
+			throw new ElementNullException("No vehicles with this Customerid !"+customerId);
 		return new ResponseEntity<Collection<Vehicle>> (vehicleCollection, HttpStatus.OK);
-			
 	}
+	
 	
 	@ApiOperation(value = "Vehcile ping schedular will update the vehicle status")
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping("/{vehicleId}")
 	public ResponseEntity<Vehicle> vehiclePing(
-			@PathVariable("vehicleId") Long vehicleId) {
+			@PathVariable("vehicleId") String vehicleId) {
 		return vehicleService.pulse(vehicleId).map(ResponseEntity::ok)
 				.orElse(notFound().build());
 }

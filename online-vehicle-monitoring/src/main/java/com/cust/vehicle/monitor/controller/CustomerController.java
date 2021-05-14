@@ -54,13 +54,12 @@ public class CustomerController {
 		}
 		return ok(customers);
 	}
-
 	@ApiOperation(value = "Get customer by customerid")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/{customerId}")
-	public ResponseEntity<Customer> findById(
-			@PathVariable("customerId") Long customerId) {
-		return customerService.find(customerId).map(ResponseEntity::ok)
+	public ResponseEntity<Customer> getCustomerByCustId(
+			@PathVariable("customerId") String customerId) {
+		return customerService.getCustomerByCustId(customerId).map(ResponseEntity::ok)
 				.orElse(notFound().build());
 	}
 
